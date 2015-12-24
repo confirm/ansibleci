@@ -52,6 +52,6 @@ class Readme(Test):
         for var in self.helper.read_yaml(defaults).keys():
             kwargs = {'var': var, 'role': name}
             if var in readme_content:
-                self.passed('Variable {role}:{var} is mentioned in role\'s Readme file'.format(**kwargs))
+                self.passed('Default variable {var} of role {role} is mentioned in role\'s Readme file'.format(**kwargs))
             else:
-                self.failed('Variable {role}:{var} is not mentioned in role\'s Readme file'.format(**kwargs))
+                self.failed('Default variable {var} of role {role} is not mentioned in role\'s Readme file'.format(**kwargs))
