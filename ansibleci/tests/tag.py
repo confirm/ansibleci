@@ -22,16 +22,16 @@ class Tag(Test):
             for item in items:
                 kwargs = {
                     'task': self.helper.get_item_identifier(item),
-                     'role': name
+                    'role': name
                 }
                 if 'tags' in item:
                     if self.config.TAG_ROLE_NAME:
-                    	tags = item['tags']
-                    	if (isinstance(tags, list) and name in tags) or tags == name:
+                        tags = item['tags']
+                        if (isinstance(tags, list) and name in tags) or tags == name:
                             self.passed('Task "{task}" in role {role} is tagged with the role name'.format(**kwargs))
                         else:
                             self.failed('Task "{task}" in role {role} is not tagged with the role name'.format(**kwargs))
                     else:
-                    	self.passed('Task "{task}" in role {role} is tagged'.format(**kwargs))
+                        self.passed('Task "{task}" in role {role} is tagged'.format(**kwargs))
                 else:
                     self.failed('Task "{task}" in role {role} is untagged'.format(**kwargs))
