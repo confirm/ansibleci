@@ -44,7 +44,7 @@ class Logger:
         the _log method.
         '''
         return self._log(
-            message='    {prefix:.>4}: {message}'.format(prefix=prefix, message=message),
+            message='    {prefix}: {message}'.format(prefix=prefix, message=message),
             color=color,
             stream=stream
         )
