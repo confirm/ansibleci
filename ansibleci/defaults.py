@@ -5,6 +5,7 @@
 #
 
 ENABLED_TESTS = [
+    'ansibleci.tests.readme.Readme',
 ]
 
 #
