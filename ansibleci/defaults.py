@@ -7,6 +7,7 @@
 ENABLED_TESTS = [
     'ansibleci.tests.readme.Readme',
     'ansibleci.tests.handler.Handler',
+    'ansibleci.tests.tag.Tag',
 ]
 
 #
@@ -24,3 +25,10 @@ README_FILENAME='README.md'
 
 # Should the default vars be checked?
 README_CHECK_DEFAULTS = True
+
+#
+# Settings for ansibleci.tests.tag.
+#
+
+# Should the tag name be identical with the role name?
+TAG_ROLE_NAME = True

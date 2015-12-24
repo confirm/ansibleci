@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import yaml
 
@@ -29,3 +30,33 @@ class Helper:
         with open(filename, 'r') as f:
             return yaml.load(f)
 
+
+    def get_yaml_items(self, dir_path, param=None):
+        result=[]
+
+        if not os.path.isdir(dir_path):
+            return []
+
+        for filename in os.listdir(dir_path):
+
+            path=os.path.join(dir_path, filename)
+            items=self.read_yaml(path)
+
+            for item in items:
+                if param:
+                    if param in item:
+                        item=item[param]
+                        if isinstance(item, list):
+                            result.extend(item)
+                        else:
+                            result.append(item)
+                else:
+                    result.append(item)
+
+        return result
+
+    def get_item_identifier(self, item):
+        try:
+            return item['name']
+        except AttributeError:
+            return 'unknown'
