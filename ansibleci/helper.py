@@ -2,6 +2,7 @@
 import os
 import yaml
 
+
 class Helper:
 
     def __init__(self, config):
@@ -22,7 +23,6 @@ class Helper:
 
         return roles
 
-
     def read_yaml(self, filename):
         '''
         Reads and parses a YAML file and returns the content.
@@ -30,22 +30,30 @@ class Helper:
         with open(filename, 'r') as f:
             return yaml.load(f)
 
-
     def get_yaml_items(self, dir_path, param=None):
-        result=[]
+        '''
+        Loops through the dir_path and parses all YAML files inside the
+        directory.
+
+        If no param is defined, then all YAML items will be returned
+        in a list. If a param is defined, then all items will be scanned for
+        this param and a list of all those values will be returned.
+        '''
+
+        result = []
 
         if not os.path.isdir(dir_path):
             return []
 
         for filename in os.listdir(dir_path):
 
-            path=os.path.join(dir_path, filename)
-            items=self.read_yaml(path)
+            path  = os.path.join(dir_path, filename)
+            items = self.read_yaml(path)
 
             for item in items:
                 if param:
                     if param in item:
-                        item=item[param]
+                        item = item[param]
                         if isinstance(item, list):
                             result.extend(item)
                         else:
