@@ -24,21 +24,20 @@ class Handler(Test):
                 else:
                     self.failed('Handler "{notify}" of role {role} not found'.format(**kwargs))
 
-
     def parse_yaml_files(self, dir_path, param):
-        result=[]
+        result = []
 
         if not os.path.isdir(dir_path):
             return []
 
         for filename in os.listdir(dir_path):
 
-            path=os.path.join(dir_path, filename)
-            items=self.helper.read_yaml(path)
+            path  = os.path.join(dir_path, filename)
+            items = self.helper.read_yaml(path)
 
             for item in items:
                 if param in item:
-                    item=item[param]
+                    item = item[param]
                     if isinstance(item, list):
                         result.extend(item)
                     else:
@@ -47,24 +46,23 @@ class Handler(Test):
         return result
 
     def get_notifies(self):
-        notifies={}
+        notifies = {}
 
         for role in self.roles:
-            name, relpath, abspath=role
-            dir_path=os.path.join(abspath, 'tasks')
-            role_notifies=self.parse_yaml_files(dir_path=dir_path, param='notify')
+            name, relpath, abspath = role
+            dir_path               = os.path.join(abspath, 'tasks')
+            role_notifies          = self.helper.get_yaml_items(dir_path=dir_path, param='notify')
             if role_notifies:
-                notifies[name]=role_notifies
+                notifies[name] = role_notifies
 
         return notifies
 
-
     def get_handlers(self):
-        handlers=[]
+        handlers = []
 
         for role in self.roles:
-            name, relpath, abspath=role
-            dir_path=os.path.join(abspath, 'handlers')
-            handlers.extend(self.parse_yaml_files(dir_path=dir_path, param='name'))
+            name, relpath, abspath = role
+            dir_path               = os.path.join(abspath, 'handlers')
+            handlers.extend(self.helper.get_yaml_items(dir_path=dir_path, param='name'))
 
         return handlers
