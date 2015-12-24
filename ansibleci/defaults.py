@@ -6,6 +6,7 @@
 
 ENABLED_TESTS = [
     'ansibleci.tests.readme.Readme',
+    'ansibleci.tests.handler.Handler',
 ]
 
 #
