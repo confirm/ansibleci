@@ -4,7 +4,8 @@ import os
 
 class Handler(Test):
     '''
-    This test checks if all notified handlers in roles are really existing.
+    Test to check if all defined handlers in `tasks/*` are really available in
+    one of the `handlers/*` files.
     '''
 
     def run(self):
