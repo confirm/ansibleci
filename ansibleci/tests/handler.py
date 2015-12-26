@@ -24,27 +24,6 @@ class Handler(Test):
                 else:
                     self.failed('Handler "{notify}" of role {role} not found'.format(**kwargs))
 
-    def parse_yaml_files(self, dir_path, param):
-        result = []
-
-        if not os.path.isdir(dir_path):
-            return []
-
-        for filename in os.listdir(dir_path):
-
-            path  = os.path.join(dir_path, filename)
-            items = self.helper.read_yaml(path)
-
-            for item in items:
-                if param in item:
-                    item = item[param]
-                    if isinstance(item, list):
-                        result.extend(item)
-                    else:
-                        result.append(item)
-
-        return result
-
     def get_notifies(self):
         '''
         Returns all task notifies in form of a dict, while the key is the role
