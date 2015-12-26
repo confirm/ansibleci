@@ -5,7 +5,10 @@ import os
 
 class Tag(Test):
     '''
-    This test checks if all tasks are properly tagged.
+    Test to check if all tasks are tagged.
+
+    If the `TAG_ROLE_NAME` config flag is set to `True`, the test will also
+    make sure that all tasks are tagged with the role's name.
     '''
 
     def run(self):
