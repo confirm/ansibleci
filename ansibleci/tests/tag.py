@@ -12,18 +12,18 @@ class Tag(Test):
         '''
         Run method which will be called by the framework.
         '''
-        self.roles = self.helper.get_roles()
+        for name, path in self.helper.get_roles().iteritems():
 
-        for role in self.roles:
-            name, relpath, abspath = role
-            dir_path = os.path.join(abspath, 'tasks')
-            items = self.helper.get_yaml_items(dir_path)
+            dir_path = os.path.join(path, 'tasks')
+            items    = self.helper.get_yaml_items(dir_path)
 
             for item in items:
+
                 kwargs = {
                     'task': self.helper.get_item_identifier(item),
                     'role': name
                 }
+
                 if 'tags' in item:
                     if self.config.TAG_ROLE_NAME:
                         tags = item['tags']

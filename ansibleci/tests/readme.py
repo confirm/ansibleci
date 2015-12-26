@@ -21,18 +21,15 @@ class Readme(Test):
         '''
         readme_filename = self.config.README_FILENAME
 
-        for role in self.roles:
-
-            name, relpath, abspath = role
-            readme                 = os.path.join(abspath, readme_filename)
-
+        for name, path in self.roles.iteritems():
+            readme = os.path.join(path, readme_filename)
             if os.path.isfile(readme):
                 self.passed('Readme file for role {role} is existing'.format(role=name))
-                self.test_defaults(role=role, readme=readme)
+                self.test_defaults(name=name, path=path, readme=readme)
             else:
                 self.failed('Readme file for role {role} is missing'.format(role=name))
 
-    def test_defaults(self, role, readme):
+    def test_defaults(self, name, path, readme):
         '''
         Tests if all variables in the defaults/main.yml are documented in the
         role's Readme file.
@@ -40,8 +37,7 @@ class Readme(Test):
         if not self.config.README_CHECK_DEFAULTS:
             return
 
-        name, relpath, abspath = role
-        defaults               = os.path.join(abspath, 'defaults/main.yml')
+        defaults = os.path.join(path, 'defaults/main.yml')
 
         if not os.path.isfile(defaults):
             return
