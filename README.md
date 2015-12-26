@@ -62,12 +62,12 @@ Standalone
 To use _Ansible CI tests_ as a standalone module you've to [install](#installation) it first, then you can run it by executing:
 
 ```bash
-./main.py
+./test.py
 ```
 
 You might need to configure [configure](#configuration) it before it works.
 
-__Hint:__ If you've installed _Ansible CI tests_ via `pip` then you might need to download the [main.py script](main.py) manually.
+__Hint:__ If you've installed _Ansible CI tests_ via `pip` then you might need to download the [test.py script](test.py) manually.
 
 Python module
 -------------
@@ -94,7 +94,7 @@ config.add_module(myapp.mysettings)
 Runner(config).run()
 ```
 
-Alternatively you can have a look at the [main.py script](main.py).
+Alternatively you can have a look at the [test.py script](test.py).
 
 Configuration
 =============
@@ -110,8 +110,8 @@ __IMPORTANT:__ Do not change the defaults because they're part of the core. Read
 Custom settings
 ---------------
 
-While the [defaults](ansibleci/defaults.py) are part of the core, you can easily overwrite them by specifying a `settings.py` next to the `main.py`.
-The `main.py` script will automatically load your `settings.py` and evaluate the settings.
+While the [defaults](ansibleci/defaults.py) are part of the core, you can easily overwrite them by specifying a `settings.py` next to the `test.py`.
+The `test.py` script will automatically load your `settings.py` and evaluate the settings.
 In `settings.py` you can easily overwrite the defaults and add new settings for your own test modules.
 
 Please note that you've the power of Python in your `settings.py`, which means you can easily `remove()` or `append()` items to existing lists.
