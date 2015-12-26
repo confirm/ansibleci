@@ -9,7 +9,7 @@ class Handler(Test):
 
     def run(self):
         '''
-        Run method which will be called by the framework.
+        Runs all tests defined in the config's ENABLED_TESTS list.
         '''
         self.roles = self.helper.get_roles()
 
@@ -46,6 +46,10 @@ class Handler(Test):
         return result
 
     def get_notifies(self):
+        '''
+        Returns all task notifies in form of a dict, while the key is the role
+        name and the value is the notified handler string.
+        '''
         notifies = {}
 
         for name, path in self.roles.iteritems():
@@ -57,6 +61,9 @@ class Handler(Test):
         return notifies
 
     def get_handlers(self):
+        '''
+        Returns all handlers in a simple list.
+        '''
         handlers = []
 
         for name, path in self.roles.iteritems():

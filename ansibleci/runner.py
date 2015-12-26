@@ -11,7 +11,8 @@ class Runner:
 
     def __init__(self, config):
         '''
-        Class constructor which caches the config instance for later access.
+        Class constructor which caches the config instance for later access and
+        creates the Logger and Helper instances.
         '''
         self.config     = config
         self.logger     = Logger()
