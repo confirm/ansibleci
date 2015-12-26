@@ -1,7 +1,7 @@
 Purpose
 =======
 
-We've created _Ansible CI tests_ to run CI tests against an existing Ansible project before changes are merged into the active development tree.
+We've created _ansibleci_ to run CI tests against an existing Ansible project before changes are merged into the active development tree.
 
 Most of the time we're working with `git` and we make use of pull/merge requests in Git platforms like GitHub, GitLab or Stash.
 When users sent pull/merge requests to merge their changes into the active development tree, someone had to check their commits in advance.
@@ -18,7 +18,7 @@ Installation
 Install via PyPi / pip
 ----------------------
 
-You can install _Ansible CI tests_ via `pip` - the Python package manager:
+You can install _ansibleci_ via `pip` - the Python package manager:
 
 ```bash
 pip install ansibleci
@@ -27,11 +27,11 @@ pip install ansibleci
 Clone git repository
 --------------------
 
-To use the [git repository](https://github.com/confirm/ansible-ci-tests) you've to clone it:
+To use the [git repository](https://github.com/confirm/ansibleci) you've to clone it:
 
 ```bash
-git clone https://github.com/confirm/ansible-ci-tests.git
-cd ansible-ci-tests/
+git clone https://github.com/confirm/ansibleci.git
+cd ansibleci/
 ```
 
 You can switch between branches and versions by executing:
@@ -50,7 +50,7 @@ Please note that we're using [Vincent Driessen's gitflow model](http://nvie.com/
 Download release
 ----------------
 
-To manually download a release, browse to the [releases page](https://github.com/confirm/ansible-ci-tests/releases) and fetch `.zip` or `.tar.gz` file.
+To manually download a release, browse to the [releases page](https://github.com/confirm/ansibleci/releases) and fetch `.zip` or `.tar.gz` file.
 Unpack the file on your system and you're ready to go.
 
 Usage
@@ -59,7 +59,7 @@ Usage
 Standalone
 ----------
 
-To use _Ansible CI tests_ as a standalone module you've to [install](#installation) it first, then you can run it by executing:
+To use _ansibleci_ as a standalone module you've to [install](#installation) it first, then you can run it by executing:
 
 ```bash
 ./test.py
@@ -67,12 +67,12 @@ To use _Ansible CI tests_ as a standalone module you've to [install](#installati
 
 You might need to configure [configure](#configuration) it before it works.
 
-__Hint:__ If you've installed _Ansible CI tests_ via `pip` then you might need to download the [test.py script](test.py) manually.
+__Hint:__ If you've installed _ansibleci_ via `pip` then you might need to download the [test.py script](test.py) manually.
 
 Python module
 -------------
 
-_Ansible CI tests_ is a Python module and can be used in any Python script. Make sure you've [installed](#installation) the `ansibleci/` directory as __system-wide Python module__ (e.g. in `site-packages`), in your __Python virtualenv__ or in your current __project directory__.
+_ansibleci_ is a Python module and can be used in any Python script. Make sure you've [installed](#installation) the `ansibleci/` directory as __system-wide Python module__ (e.g. in `site-packages`), in your __Python virtualenv__ or in your current __project directory__.
 
 There's currently no API documentation available. However, you can easily have a look at the `ansibleci` module and read the __class and method descriptions__.
 
@@ -102,7 +102,7 @@ Configuration
 Defaults
 --------
 
-_Ansible CI tests_ is designed to be flexible and dynamic, therefor not everything is hard coded in tests.
+_ansibleci_ is designed to be flexible and dynamic, therefor not everything is hard coded in tests.
 To get an overview over all customisable settings you should have a look at the [defaults](ansibleci/defaults.py).
 
 __IMPORTANT:__ Do not change the defaults because they're part of the core. Read the next chapter to customise the settings.
@@ -164,33 +164,7 @@ Contribution
 
 We would be happy to get new contributors. Feel free to open issues and send us merge requests.
 
-Please note that we use [Vincent Driessen's gitflow model](http://nvie.com/posts/a-successful-git-branching-model/), so make sure you create proper feature branches.
-
-All __branches must be properly named__, which means:
-
-* `develop` is the bleeding-edge __development branch__
-* `master` is the latest __stable branch__
-* `hotfix-*` branches are __hotfix branches__
-* `release-*` branches are __release branches__
-
-__Feature branches__ have no fix naming scheme, though their name should describe the feature accordingly.
-
-We're using __semantic versioning__, which means:
-
-* version __tags__ are named `vMAJOR.MINOR.BUGFIX`
-* __release branches__ are named `release-MAJOR.MINOR`
-
-Also make sure you use __proper commit messages__ and __prefix__ them with:
-
-* `FEATURE: Added new foobar feature`
-* `BUGFIX: Fixed foobar bug`
-* `DOCS: Updated the documentation for foobar`
-* `REFACTOR: Refactored code of foobar` _which didn't affect the meaning of the code itself_
-
-If there's an issue available (especially for bugs) make sure you mention the __issue number__ it in the git commit message as well:
-
-* `FEATURE #42: Added new foobar feature`
-* `BUGFIX #42: Fixed foobar bug`
+Please read the [CONTRIBUTION page](CONTRIBUTION.md) to learn more about our guidelines and how you can contribute to the _ansibleci_ project.
 
 License
 =======
