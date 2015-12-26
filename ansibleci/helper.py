@@ -4,8 +4,14 @@ import yaml
 
 
 class Helper:
+    '''
+    Helper class which provides some helper methods.
+    '''
 
     def __init__(self, config):
+        '''
+        Class constructor which caches the config instance for later access.
+        '''
         self.config = config
 
     def get_roles_path(self):
@@ -71,6 +77,14 @@ class Helper:
         return result
 
     def get_item_identifier(self, item):
+        '''
+        Returns the identifier of a (task) item, which by default is the name
+        param of the item. If no name param is defined then the method will
+        return "unknown".
+
+        @todo: Update this method to consider other params when name is not
+        defined (e.g. "include").
+        '''
         try:
             return item['name']
         except AttributeError:
