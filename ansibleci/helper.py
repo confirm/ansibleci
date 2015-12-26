@@ -8,18 +8,25 @@ class Helper:
     def __init__(self, config):
         self.config = config
 
+    def get_roles_path(self):
+        '''
+        Returns the absolute path to the roles/ directory, while considering
+        the BASEDIR and ROLES config variables.
+        '''
+        return os.path.abspath(os.path.join(self.config.BASEDIR, self.config.ROLES))
+
     def get_roles(self):
         '''
-        Returns all roles in a list of tuples with the following structure:
-
-            (role_name, relativ_path, absolute_path)
+        Returns a key-value dict with a roles, while the key is the role name
+        and the value is the absolute role path.
         '''
-        roles = []
+        roles = {}
+        path  = self.get_roles_path()
 
-        for entry in os.listdir(self.config.ROLES):
-            relpath = os.path.join(self.config.ROLES, entry)
-            if os.path.isdir(relpath):
-                roles.append((entry, relpath, os.path.abspath(relpath)))
+        for entry in os.listdir(path):
+            rolepath = os.path.join(path, entry)
+            if os.path.isdir(rolepath):
+                roles[entry] = rolepath
 
         return roles
 

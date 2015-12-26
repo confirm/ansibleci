@@ -48,10 +48,9 @@ class Handler(Test):
     def get_notifies(self):
         notifies = {}
 
-        for role in self.roles:
-            name, relpath, abspath = role
-            dir_path               = os.path.join(abspath, 'tasks')
-            role_notifies          = self.helper.get_yaml_items(dir_path=dir_path, param='notify')
+        for name, path in self.roles.iteritems():
+            dir_path      = os.path.join(path, 'tasks')
+            role_notifies = self.helper.get_yaml_items(dir_path=dir_path, param='notify')
             if role_notifies:
                 notifies[name] = role_notifies
 
@@ -60,9 +59,8 @@ class Handler(Test):
     def get_handlers(self):
         handlers = []
 
-        for role in self.roles:
-            name, relpath, abspath = role
-            dir_path               = os.path.join(abspath, 'handlers')
+        for name, path in self.roles.iteritems():
+            dir_path = os.path.join(path, 'handlers')
             handlers.extend(self.helper.get_yaml_items(dir_path=dir_path, param='name'))
 
         return handlers
