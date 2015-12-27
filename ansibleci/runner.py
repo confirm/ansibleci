@@ -11,7 +11,7 @@ from ansibleci.logger import Logger
 from ansibleci.helper import Helper
 
 
-class Runner:
+class Runner(object):
     '''
     Runner class which executes all tests.
     '''

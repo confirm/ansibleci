@@ -10,7 +10,7 @@ import os
 import sys
 
 
-class Logger:
+class Logger(object):
     '''
     Logger class which is used to print log messages to stdout and stderr.
     '''

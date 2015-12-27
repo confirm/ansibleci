@@ -10,7 +10,7 @@ import os
 import yaml
 
 
-class Helper:
+class Helper(object):
     '''
     Helper class which provides some helper methods.
     '''
