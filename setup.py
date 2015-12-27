@@ -7,7 +7,7 @@ setup(
         'ansibleci',
         'ansibleci.tests',
     ],
-    version='1.0.0',
+    version='0.2.0',
     description='Ansbile CI tests',
     author='confirm IT solutions',
     author_email='pypi@confirm.ch',
