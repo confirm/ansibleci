@@ -6,7 +6,7 @@
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class Config:
+class Config(object):
     '''
     Configuration class which can be used to load configuration parameters from
     a Python module and query them later.
@@ -37,10 +37,19 @@ class Config:
         except KeyError:
             raise KeyError('Config parameter {} doesn\'t exist'.format(attr))
 
+    def __setattr__(self, attr, value):
+        '''
+        Sets a configuration parameter.
+        '''
+        if attr == 'config':
+            super(Config, self).__setattr__(attr, value)
+        else:
+            self.config[attr] = value
+
     def add_module(self, module):
         '''
         Adds configuration parameters from a Python module.
         '''
         for key, value in module.__dict__.iteritems():
             if key[0:2] != '__':
-                self.config[key] = value
+                self.__setattr__(attr=key, value=value)
