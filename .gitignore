@@ -6,6 +6,9 @@
 /dist
 /MANIFEST
 
+# Ignore docs builds.
+/docs/_build
+
 # Ignore user settings and tests.
 /settings.py
 /tests
