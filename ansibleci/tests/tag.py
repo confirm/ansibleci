@@ -1,29 +1,39 @@
 # -*- coding: utf-8 -*-
+#
+# Copyright (c) 2015 confirm IT solutions
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 from ansibleci.test import Test
 import os
 
 
 class Tag(Test):
     '''
-    This test checks if all tasks are properly tagged.
+    Test to check if all tasks are tagged.
+
+    If the `TAG_ROLE_NAME` config flag is set to `True`, the test will also
+    make sure that all tasks are tagged with the role's name.
     '''
 
     def run(self):
         '''
         Run method which will be called by the framework.
         '''
-        self.roles = self.helper.get_roles()
+        for name, path in self.helper.get_roles().iteritems():
 
-        for role in self.roles:
-            name, relpath, abspath = role
-            dir_path = os.path.join(abspath, 'tasks')
-            items = self.helper.get_yaml_items(dir_path)
+            dir_path = os.path.join(path, 'tasks')
+            items    = self.helper.get_yaml_items(dir_path)
 
             for item in items:
+
                 kwargs = {
                     'task': self.helper.get_item_identifier(item),
                     'role': name
                 }
+
                 if 'tags' in item:
                     if self.config.TAG_ROLE_NAME:
                         tags = item['tags']

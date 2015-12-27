@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+#
 # -*- coding: utf-8 -*-
 #
 # Copyright (c) 2015 confirm IT solutions
@@ -6,42 +8,23 @@
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import sys
-import os
+from ansibleci.config import Config
+from ansibleci.runner import Runner
 
-#
-# Ansible paths.
-#
+def main(config=False):
 
-# Basedir which should point to an Ansible project.
-BASEDIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
+    # Create config instance.
+    config = Config(load_defaults=True)
 
-# Roles directory path, relativ to BASEDIR.
-ROLES = 'roles/'
+    # Load user-defined settings into config instance.
+    try:
+        import settings
+        config.add_module(settings)
+    except ImportError:
+        pass
 
-#
-# A list of tests to run.
-#
+    # Start runner.
+    Runner(config).run()
 
-ENABLED_TESTS = [
-    'ansibleci.tests.readme.Readme',
-    'ansibleci.tests.handler.Handler',
-    'ansibleci.tests.tag.Tag',
-]
-
-#
-# Settings for ansibleci.tests.readme.
-#
-
-# Name of the role's Readme file.
-README_FILENAME = 'README.md'
-
-# Should the default vars be checked?
-README_CHECK_DEFAULTS = True
-
-#
-# Settings for ansibleci.tests.tag.
-#
-
-# Should the tag name be identical with the role name?
-TAG_ROLE_NAME = True
+if __name__ == '__main__':
+    main()

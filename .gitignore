@@ -1,3 +1,14 @@
+# Ignore all compiled Python files.
 *.pyc
+
+# Ignore files used for setuptools / PyPi upload.
+/build
+/dist
+/MANIFEST
+
+# Ignore docs builds.
+/docs/_build
+
+# Ignore user settings and tests.
 /settings.py
 /tests
