@@ -14,12 +14,12 @@ class Readme(Test):
     '''
     Test to check if all roles have a Readme file in place.
 
-    If the `README_CHECK_DEFAULTS` config flag is set to `True`, then it will
-    also check if the role's default variables are mentioned in the role's
-    Readme file.
+    If the ``README_CHECK_DEFAULTS`` config flag is set to ``True``, then it
+    will also check if the role's default variables (i.e. ``defaults/*``) are
+    mentioned in the role's Readme file.
 
-    The name of the Readme file is controled with the `README_FILENAME` config
-    variable
+    The name of the Readme file is controled with the ``README_FILENAME``
+    config variable.
     '''
 
     def run(self):

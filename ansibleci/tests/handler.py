@@ -12,8 +12,11 @@ import os
 
 class Handler(Test):
     '''
-    Test to check if all defined handlers in `tasks/*` are really available in
-    one of the `handlers/*` files.
+    Test to check if all notified handlers (i.e. ``notify:``) are available.
+
+    The task ``notify:`` parameters will be looked up in all ``tasks/*`` files,
+    while the handler ``name:`` parameters will be looked up in all
+    ``handlers/*`` files.
     '''
 
     def run(self):
