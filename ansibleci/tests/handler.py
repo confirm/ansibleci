@@ -20,7 +20,7 @@ class Handler(Test):
         '''
         Runs all tests defined in the config's ENABLED_TESTS list.
         '''
-        self.roles = self.helper.get_roles()
+        self.roles = self.get_helper().get_roles()
 
         notifies = self.get_notifies()
         handlers = self.get_handlers()
@@ -42,7 +42,7 @@ class Handler(Test):
 
         for name, path in self.roles.iteritems():
             dir_path      = os.path.join(path, 'tasks')
-            role_notifies = self.helper.get_yaml_items(dir_path=dir_path, param='notify')
+            role_notifies = self.get_helper().get_yaml_items(dir_path=dir_path, param='notify')
             if role_notifies:
                 notifies[name] = role_notifies
 
@@ -56,6 +56,6 @@ class Handler(Test):
 
         for name, path in self.roles.iteritems():
             dir_path = os.path.join(path, 'handlers')
-            handlers.extend(self.helper.get_yaml_items(dir_path=dir_path, param='name'))
+            handlers.extend(self.get_helper().get_yaml_items(dir_path=dir_path, param='name'))
 
         return handlers

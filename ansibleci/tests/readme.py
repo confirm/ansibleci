@@ -26,17 +26,17 @@ class Readme(Test):
         '''
         Run method which will be called by the framework.
         '''
-        self.roles = self.helper.get_roles()
-        self.test_readme()
+        roles = self.get_helper().get_roles()
+        self.test_readme(roles)
 
-    def test_readme(self):
+    def test_readme(self, roles):
         '''
         Tests the existence of role's README files and if the README files
         exists it will call the test_defaults() for each role.
         '''
-        readme_filename = self.config.README_FILENAME
+        readme_filename = self.get_config().README_FILENAME
 
-        for name, path in self.roles.iteritems():
+        for name, path in roles.iteritems():
             readme = os.path.join(path, readme_filename)
             if os.path.isfile(readme):
                 self.passed('Readme file for role {role} is existing'.format(role=name))
@@ -49,7 +49,7 @@ class Readme(Test):
         Tests if all variables in the defaults/main.yml are documented in the
         role's Readme file.
         '''
-        if not self.config.README_CHECK_DEFAULTS:
+        if not self.get_config().README_CHECK_DEFAULTS:
             return
 
         defaults = os.path.join(path, 'defaults/main.yml')
@@ -60,7 +60,7 @@ class Readme(Test):
         with open(readme, 'r') as f:
             readme_content = f.read()
 
-        for var in self.helper.read_yaml(defaults).keys():
+        for var in self.get_helper().read_yaml(defaults).keys():
             kwargs = {'var': var, 'role': name}
             if var in readme_content:
                 self.passed('Default variable {var} of role {role} is mentioned in role\'s Readme file'.format(**kwargs))
