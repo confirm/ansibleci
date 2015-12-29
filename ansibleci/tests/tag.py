@@ -12,9 +12,9 @@ import os
 
 class Tag(Test):
     '''
-    Test to check if all tasks are tagged.
+    Test to check if all tasks are tagged properly with the ``tags:`` parameter.
 
-    If the `TAG_ROLE_NAME` config flag is set to `True`, the test will also
+    If the ``TAG_ROLE_NAME`` config flag is set to ``True``, the test will also
     make sure that all tasks are tagged with the role's name.
     '''
 
