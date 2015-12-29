@@ -21,14 +21,35 @@ To mark a test as passed or failed you can use:
     self.passed('Test Foo passed')
     self.failed('Test Bar failed')
 
-Access the config params
-------------------------
+Accessing config params
+-----------------------
 
-To access the config params you can use ``self.config``, which gives you access to the `Config instance <https://github.com/confirm/ansibleci/blob/develop/ansibleci/config.py>`_. For example, if you want to access the ``FOOBAR`` config parameter, you can use:
+To access the config params you should call ``self.get_config()``, which gives you access to the `Config instance <https://github.com/confirm/ansibleci/blob/develop/ansibleci/config.py>`_: 
+
+.. automodule:: ansibleci.config
+   :members:
+
+For example, if you want to access the ``FOOBAR`` config parameter:
 
 .. code-block:: python
 
-    foobar = self.config.FOOBAR
+    config = self.get_config()
+    foobar = config.FOOBAR
+
+Helper class
+------------
+
+We're providing a `Helper class <https://github.com/confirm/ansibleci/blob/develop/ansibleci/helper.py>`_ for common used methods:
+
+.. automodule:: ansibleci.helper
+   :members:
+
+The helper instance can be accessed by ``self.get_helper()``. For example, if you want to get the roles path:
+
+.. code-block:: python
+
+    helper     = self.get_helper()
+    roles_path = helper.get_roles_path()
 
 Store test class / module
 -------------------------
