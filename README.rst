@@ -1,3 +1,7 @@
+.. image:: https://readthedocs.org/projects/ansibleci/badge/?version=latest
+   :target: http://ansibleci.readthedocs.org/en/latest/?badge=latest
+   :alt: Documentation Status
+
 Purpose
 =======
 
