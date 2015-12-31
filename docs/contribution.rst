@@ -82,6 +82,7 @@ Also make sure you use **proper commit messages** and **prefix** them with:
 * ``BUGFIX: Fixed foobar bug``
 * ``DOCS: Updated the documentation for foobar``
 * ``REFACTOR: Refactored code of foobar`` *which didn't affect the meaning of the code itself*
+* ``STYLE: Updated code style of foobar``
 
 If there's an issue available (especially for bugs) make sure you mention the **issue number** it in the git commit message as well:
 
