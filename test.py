@@ -11,6 +11,7 @@
 from ansibleci.config import Config
 from ansibleci.runner import Runner
 
+
 def main(config=False):
 
     # Create config instance.
