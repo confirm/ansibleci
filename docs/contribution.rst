@@ -88,6 +88,27 @@ If there's an issue available (especially for bugs) make sure you mention the **
 * ``FEATURE #42: Added new foobar feature``
 * ``BUGFIX #42: Fixed foobar bug``
 
+Creating a changelog
+--------------------
+
+The changelog can automatically be created from the git commit messages.
+Just checkout the git repository and run the following Python script:
+
+.. code-block:: bash
+
+    ./changelog.py COMMIT
+
+A changelog will be created from the first till the commit you specified as ``COMMIT``.
+Please note that you can use any git reference for ``COMMIT`` (e.g. ``HEAD``, a SHA sum, branches, tags).
+
+The changelog will be printed to standard out. However, you can easily redirect it if you're creating a new release:
+
+.. code-block:: bash
+
+    ./changelog.py COMMIT >CHANGELOG.rst
+
+Just make sure you replace the ``COMMIT`` heading in ``CHANGELOG.rst`` with a proper release version before commiting it.
+
 Creating a new release
 ----------------------
 
@@ -100,6 +121,7 @@ To create a new *ansibleci* release make sure the new version meets the followin
 * the new release is **tested properly**
 * the PyPI `setup.py script <https://github.com/confirm/ansibleci/blob/develop/setup.py>`_ is updated with the **new targeted version**
 * the docs `conf.py script <https://github.com/confirm/ansibleci/blob/develop/docs/conf.py>`_ is updated with the **new targeted version**
+* a **new changelog** is created
 
 To test the `docs <http://ansibleci.readthedocs.org/>`_ you can either let them build on `Read the Docs <https://readthedocs.org/dashboard/ansibleci/versions/>`_ or build them locally:
 
