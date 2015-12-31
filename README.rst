@@ -1,6 +1,18 @@
+.. image:: https://img.shields.io/pypi/v/ansibleci.svg
+    :target: https://pypi.python.org/pypi/ansibleci
+    :alt: PyPi Version
+
+.. image:: https://img.shields.io/pypi/dm/ansibleci.svg
+    :target: https://pypi.python.org/pypi/ansibleci
+    :alt: PyPi Downloads
+
 .. image:: https://readthedocs.org/projects/ansibleci/badge/?version=latest
-   :target: http://ansibleci.readthedocs.org/en/latest/?badge=latest
-   :alt: Documentation Status
+    :target: http://ansibleci.readthedocs.org/en/latest/?badge=latest
+    :alt: Documentation Status
+
+.. image:: https://travis-ci.org/confirm/ansibleci.svg?branch=develop
+    :target: https://travis-ci.org/confirm/ansibleci
+    :alt: Build Status
 
 Purpose
 =======
