@@ -66,7 +66,8 @@ class Helper(object):
         Reads and parses a YAML file and returns the content.
         '''
         with open(filename, 'r') as f:
-            return yaml.load(f)
+            y = yaml.load(f)
+            return y if y else {}
 
     def get_yaml_items(self, dir_path, param=None):
         '''
