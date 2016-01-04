@@ -8,6 +8,7 @@
 
 import os
 import sys
+from subprocess import check_call, CalledProcessError
 
 
 class Logger(object):
@@ -21,6 +22,16 @@ class Logger(object):
     COLOR_RED_BOLD   = '\033[1;91m'
     COLOR_END        = '\033[0m'
 
+    def __init__(self):
+        '''
+        Class constructor which determines if the terminal supports colors.
+        '''
+        try:
+            check_call('[ "$(tput colors)" -ge 8 ]', shell=True)
+            self.color_term = True
+        except CalledProcessError:
+            self.color_term = False
+
     def _log(self, message, stream, color=None, newline=False):
         '''
         Logs the message to the sys.stdout or sys.stderr stream.
@@ -29,7 +40,7 @@ class Logger(object):
         string "color", then the output will be colored.
         '''
 
-        if color and 'TERM' in os.environ and 'color' in os.environ['TERM']:
+        if color and self.color_term:
             colorend = Logger.COLOR_END
         else:
             color = colorend = ''
