@@ -113,5 +113,5 @@ class Helper(object):
         '''
         try:
             return item['name']
-        except AttributeError:
+        except KeyError:
             return 'unknown'
