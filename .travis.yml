@@ -8,5 +8,4 @@ python:
 install:
   - pip install pep8
 script:
-  - pep8 --ignore=E501,E221 ansibleci
-  - pep8 --ignore=E501,E221 test.py
+  - pep8 --verbose --ignore=E501,E221 --filename=*.py .
