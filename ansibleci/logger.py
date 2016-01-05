@@ -22,15 +22,23 @@ class Logger(object):
     COLOR_RED_BOLD   = '\033[1;91m'
     COLOR_END        = '\033[0m'
 
-    def __init__(self):
+    def __init__(self, config):
         '''
         Class constructor which determines if the terminal supports colors.
         '''
-        try:
-            check_call('tput colors 2>/dev/null && [ "$(tput colors)" -ge 8 ]', shell=True)
-            self.color_term = True
-        except CalledProcessError:
-            self.color_term = False
+        self.config = config
+
+        # Auto-detect color settings based on tput.
+        if config.LOGGER_COLORS == 'auto':
+            try:
+                check_call('tput colors 2>/dev/null && [ "$(tput colors)" -ge 8 ]', shell=True)
+                self.color_term = True
+            except CalledProcessError:
+                self.color_term = False
+
+        # Manually enable or disable colors.
+        else:
+            self.color_term = bool(config.LOGGER_COLORS)
 
     def _log(self, message, stream, color=None, newline=False):
         '''

@@ -22,7 +22,7 @@ class Runner(object):
         creates the Logger and Helper instances.
         '''
         self.config     = config
-        self.logger     = Logger()
+        self.logger     = Logger(config=config)
         self.helper     = Helper(config=config)
         self.has_passed = True
 
