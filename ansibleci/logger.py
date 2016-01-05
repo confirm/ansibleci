@@ -27,7 +27,7 @@ class Logger(object):
         Class constructor which determines if the terminal supports colors.
         '''
         try:
-            check_call('[ "$(tput colors)" -ge 8 ]', shell=True)
+            check_call('tput colors 2>/dev/null && [ "$(tput colors)" -ge 8 ]', shell=True)
             self.color_term = True
         except CalledProcessError:
             self.color_term = False
