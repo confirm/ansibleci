@@ -32,6 +32,13 @@ ENABLED_TESTS = [
 ]
 
 #
+# Logger settings.
+#
+
+# Enable color output [True|False|'auto']
+LOGGER_COLORS = 'auto'
+
+#
 # Settings for ansibleci.tests.readme.
 #
 
