@@ -18,7 +18,13 @@ github release
 --------------
 
 To manually download a github release, browse to the `releases page <https://github.com/confirm/ansibleci/releases>`_ and fetch a ``.zip`` or ``.tar.gz`` file.
-Unpack the file on your system and you're ready to go.
+Unpack the file on your system, then run ``pip`` to install all requirements:
+
+.. code-block:: bash
+
+    pip install -r <unpack_path>/requirements.txt
+
+If you don't want to install the requirements in your global site-packages, you can also use a `Virtual Environment (aka virtualenv) <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_ for ``ansibleci``.
 
 git repository
 --------------
@@ -32,6 +38,14 @@ Clone the repository:
 
     git clone https://github.com/confirm/ansibleci.git
     cd ansibleci/
+
+Make sure you run ``pip`` to install all requirements:
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+If you don't want to install the requirements in your global site-packages, you can also use a `Virtual Environment (aka virtualenv) <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_ for ``ansibleci``.
 
 You can switch between branches and versions by executing:
 
