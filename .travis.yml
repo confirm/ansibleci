@@ -8,4 +8,8 @@ python:
 install:
   - pip install pep8
 script:
+  # Run pep8 check.
   - pep8 --verbose --ignore=E501,E221 --filename=*.py .
+
+  # Test the pypi build.
+  - python setup.py build
