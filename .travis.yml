@@ -6,10 +6,13 @@ python:
   - "3.4"
   - "3.5"
 install:
-  - pip install pep8
+  - pip install pep8 sphinx
 script:
   # Run pep8 check.
   - pep8 --verbose --ignore=E501,E221 --filename=*.py .
 
   # Test the pypi build.
   - python setup.py build
+
+  # Test the build of the documentation.
+  - cd docs && make html
