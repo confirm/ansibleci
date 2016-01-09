@@ -5,6 +5,7 @@
 /build
 /dist
 /MANIFEST
+/ansibleci.egg-info
 
 # Ignore docs builds.
 /docs/_build
