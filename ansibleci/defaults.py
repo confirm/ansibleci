@@ -14,7 +14,7 @@ import os
 #
 
 # Basedir which should point to an Ansible project.
-BASEDIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
+BASEDIR = os.getcwd()
 
 # Roles directory paths, can be absolute or relative (to BASEDIR).
 ROLES = [
