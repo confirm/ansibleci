@@ -30,7 +30,7 @@ Python module
 
 Because ``ansibleci`` is a Python module by nature, it can be used within any of your existing Python scripts.
 
-Unfortunately there's currently no full API documentation available, though there's a `guide how to write <writing-tests.html>`_.
+Have a look at the `API documentation <api.html>`_ and the `writing tests guide <writing-tests.html>`_.
 You can also have a look at the `ansibleci <https://github.com/confirm/ansibleci/tree/develop/ansibleci>`_ module and read the **class and method descriptions**.
 
 Here's an example how to use the ``ansibleci`` Python module in your own Python script:
