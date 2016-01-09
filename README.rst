@@ -28,6 +28,8 @@ So we started a new CI project to test if the commited changes meet our guidelin
 Feel free to use this CI framework for your own standalone Ansible project, integrate it in your own Travis CI or Gitlab CI.
 We try to provide some default tests which we're using every day. However, you can easily create new tests which meet your personal requirements.
 
+Made with ♥ for the community.
+
 Documentation
 =============
 
