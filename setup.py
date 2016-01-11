@@ -7,6 +7,9 @@ setup(
         'ansibleci',
         'ansibleci.tests',
     ],
+    scripts=[
+        'bin/ansibleci',
+    ],
     version='0.2.0',
     description='Ansbile CI tests',
     author='confirm IT solutions',

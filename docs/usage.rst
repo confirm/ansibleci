@@ -6,15 +6,22 @@ The usage of ``ansibleci`` is also quite simple.
 Standalone
 ----------
 
-To use ``ansibleci`` as a standalone tool to test your Ansible project you've to make sure you've installed it properly.
+To use ``ansibleci`` as a standalone tool to test your Ansible project you've to make sure you've `installed <installation.html>`_ it properly.
 
-If you've installed it via `github release <installation.html#github-release>`_ or by `using the git repository <installation.html#git-repository>`_, then you should already have a version of the ``test.py`` Python script. Though, if you've installed it via ``pip`` you should obtain an initial `test.py version from our git repository <https://raw.githubusercontent.com/confirm/ansibleci/develop/test.py>`_.
-
-We recommend you create a ``test/`` directory in the root directory of your Ansible project and put all the test files inside this directory. Then run:
+To test your Ansible project you've to run:
 
 .. code-block:: bash
 
-    ./test.py
+    ansibleci <ANSIBLE PROJECT BASEDIR>
+
+If you've `installed the package via pip <installation.html#pypi-pip>`_ you should already have the ``ansibleci`` script located at ``/usr/local/bin/ansibleci``. 
+Just make sure you've ``/usr/local/bin`` in your ``PATH`` environment variable or call it with the absolute path.
+
+However, if you've installed it manually via `github release <installation.html#github-release>`_ or `git repository <installation.html#git-repository>`_ you've to run a slightly different command:
+
+.. code-block:: bash
+
+    bin/ansibleci <ANSIBLE PROJECT BASEDIR>
 
 Please note that you might need to `configure <configuration.html>`_ ``ansibleci`` first.
 
@@ -23,9 +30,10 @@ Python module
 
 Because ``ansibleci`` is a Python module by nature, it can be used within any of your existing Python scripts.
 
-There's currently no API documentation available. However, you can easily have a look at the ``ansibleci`` module and read the **class and method descriptions**.
+Have a look at the `API documentation <api.html>`_ and the `writing tests guide <writing-tests.html>`_.
+You can also have a look at the `ansibleci <https://github.com/confirm/ansibleci/tree/develop/ansibleci>`_ module and read the **class and method descriptions**.
 
-Here's an example how to use the ``ansibleci`` Python module in your script:
+Here's an example how to use the ``ansibleci`` Python module in your own Python script:
 
 .. code-block:: python
 
@@ -34,7 +42,7 @@ Here's an example how to use the ``ansibleci`` Python module in your script:
     import myapp.settings
 
     # Create a new ansibleci Config instance, which is used by the Runner.
-    config = Config(load*defaults=True)
+    config = Config(load_defaults=True)
 
     # Add your own settings module to the Config instance.
     # Your own settings will overwrite the defaults.
@@ -46,4 +54,4 @@ Here's an example how to use the ``ansibleci`` Python module in your script:
     # Create a new runner instance and run the tests.
     Runner(config).run()
 
-Alternatively you can have a look at the `test.py script in the github repository <https://github.com/confirm/ansibleci/blob/develop/test.py>`_.
+Of course you can also have a look at the existing `ansibleci script in the github repository <https://github.com/confirm/ansibleci/blob/develop/bin/ansibleci>`_.

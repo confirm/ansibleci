@@ -13,6 +13,7 @@ Contents:
    built-in-tests
    writing-tests
    contribution
+   api
 
 Indices and tables
 ==================
