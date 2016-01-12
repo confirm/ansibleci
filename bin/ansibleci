@@ -12,12 +12,17 @@ import os
 import sys
 
 # Search for ansibleci module relative to script's dir and parent dir.
-cd = os.path.abspath(os.path.dirname(sys.argv[0]))
-pd = os.path.abspath(os.path.join(cd, '..'))
-for d in (cd, pd):
+sd = os.path.abspath(os.path.dirname(sys.argv[0]))
+pd = os.path.abspath(os.path.join(sd, '..'))
+for d in (sd, pd):
     if os.path.isfile(os.path.join(d, 'ansibleci', '__init__.py')):
         sys.path.insert(0, d)
         break
+
+# Make sure current working directory is also in path.
+d = os.getcwd()
+if d not in sys.path:
+    sys.path.insert(0, d)
 
 
 def main(basedir=None, config_module=None):
