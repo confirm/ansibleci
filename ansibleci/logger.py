@@ -31,7 +31,7 @@ class Logger(object):
         # Auto-detect color settings based on tput.
         if config.LOGGER_COLORS == 'auto':
             try:
-                check_call('tput colors 2>/dev/null && [ "$(tput colors)" -ge 8 ]', shell=True)
+                check_call('tput colors >/dev/null 2>&1 && [ "$(tput colors)" -ge 8 ]', shell=True)
                 self.color_term = True
             except CalledProcessError:
                 self.color_term = False
