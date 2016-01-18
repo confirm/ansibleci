@@ -7,6 +7,7 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import os
+import re
 import yaml
 
 
@@ -66,7 +67,8 @@ class Helper(object):
         Reads and parses a YAML file and returns the content.
         '''
         with open(filename, 'r') as f:
-            y = yaml.load(f)
+            d = re.sub(r'\{\{ *([^ ]+) *\}\}', r'\1', f.read())
+            y = yaml.safe_load(d)
             return y if y else {}
 
     def get_yaml_items(self, dir_path, param=None):
